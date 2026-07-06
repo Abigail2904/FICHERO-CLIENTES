@@ -11,6 +11,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// A veces el host (p. ej. Render) puede devolver un MIME incorrecto para CSS.
+// Forzamos la respuesta con el tipo correcto para evitar "strict MIME checking".
+app.get('/styles.css', (req, res) => {
+  res.type('text/css');
+  res.sendFile(path.join(__dirname, 'public', 'styles.css'));
+});
+
 const mongoUri = process.env.MONGO_URI || process.env.MONGO_URI_TEST || 'mongodb://127.0.0.1:27017/clientela';
 const dbName = process.env.MONGO_DB_NAME || 'clientela';
 
