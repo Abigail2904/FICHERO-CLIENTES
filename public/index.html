@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Clientela</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>MONTESTILISTA</h1>
+
+      <div class="search">
+        <input id="searchInput" placeholder="Buscar por nombre o apellido" />
+        <button id="searchBtn">Buscar</button>
+        <button id="clearBtn">Mostrar todo</button>
+      </div>
+
+      <div class="form">
+        <h3 id="formTitle">Nuevo cliente</h3>
+        <input id="firstName" placeholder="Nombre" />
+        <input id="lastName" placeholder="Apellido" />
+        <textarea id="description" placeholder="Descripción / notas"></textarea>
+        <div class="form-actions">
+          <button id="saveBtn">Guardar</button>
+          <button id="cancelBtn" style="display:none">Cancelar</button>
+        </div>
+      </div>
+
+      <div id="list"></div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

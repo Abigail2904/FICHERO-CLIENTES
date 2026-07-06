@@ -1,0 +1,63 @@
+.root-bg{
+	position:fixed; inset:0; z-index:-1; background-size:cover; background-position:center; filter:brightness(0.9);
+}
+body{
+	font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+	color:#120d0d;
+	margin:0;
+	min-height:100vh;
+	background-image: url('/IMG/logo peluqueria.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	padding:20px;
+	box-sizing:border-box;
+}
+.container{
+	max-width:980px; margin:0 auto; padding:28px; border-radius:12px;
+	background: rgba(221, 214, 214, 0.82); box-shadow: 0 8px 30px rgba(59,47,37,0.12);
+	backdrop-filter: blur(6px);
+}
+.search{ display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap }
+.search input{ flex:1; min-width:220px; padding:10px 12px; border-radius:8px; border:1px solid rgba(90,70,50,0.12); }
+.search button{ padding:10px 12px; border-radius:8px; border:none; background:#c9a66b; color:#fff; cursor:pointer }
+.search button#clearBtn{ background:transparent; color:#5a4632; border:1px solid rgba(90,70,50,0.08) }
+.form{ padding:14px; margin-bottom:20px }
+.form h3{ margin:0 0 8px 0; color:#5a4632 }
+.form input, .form textarea{ width:100%; padding:10px; margin:8px 0; border-radius:8px; border:1px solid rgba(90,70,50,0.08); box-sizing:border-box; }
+.form textarea{ min-height:80px; resize:vertical }
+.form-actions{ display:flex; gap:10px; flex-wrap:wrap }
+.form-actions button{ padding:10px 14px; border-radius:8px; border:none; cursor:pointer; flex:1; min-width:120px }
+.form-actions #saveBtn{ background:#5a4632; color:#fff }
+.form-actions #cancelBtn{ background:transparent; border:1px solid rgba(90,70,50,0.08); color:#5a4632 }
+.group{ margin-bottom:18px }
+.group h2{ margin:8px 0; padding:8px 12px; background: rgba(233, 209, 166, 0.6); color:#5a4632; border-radius:8px }
+.client{ padding:10px 0; border-bottom:1px solid rgba(90,70,50,0.05) }
+.client-main{ display:flex; align-items:center; gap:14px; flex-wrap:wrap }
+.client .num{ width:40px; text-align:right; color:#8b7a6a; font-weight:600 }
+.client .name{ flex:1; font-weight:600; color:#3b2f25; min-width:180px }
+.client .actions{ display:flex; gap:8px; flex-wrap:wrap }
+.client .actions button{ padding:6px 10px; border-radius:6px; border:none; cursor:pointer }
+.client .actions .edit{ background:#c9a66b; color:#fff }
+.client .actions .del{ background:transparent; border:1px solid rgba(90,70,50,0.08); color:#5a4632 }
+.desc{ color:#4a3d33; margin-left:48px; margin-top:8px; font-size:0.95rem }
+
+/* Responsive */
+@media(max-width:768px){
+	body{ padding:12px; }
+	.container{ padding:18px; }
+	.search{ flex-direction:column; }
+	.search input, .search button{ width:100%; }
+	.form-actions{ flex-direction:column; }
+	.form-actions button{ width:100%; }
+}
+
+@media(max-width:480px){
+	body{ padding:8px; }
+	.container{ padding:14px; border-radius:10px; }
+	.client-main{ align-items:flex-start; }
+	.client .num{ width:24px; text-align:left; }
+	.desc{ margin-left:0; }
+}
+
