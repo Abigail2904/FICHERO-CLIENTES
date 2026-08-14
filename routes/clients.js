@@ -31,6 +31,18 @@ router.get('/', async (req, res) => {
   }
 });
 
+// GET scheduled for a specific date: /api/clients/scheduled?date=YYYY-MM-DD
+router.get('/scheduled', async (req, res) => {
+  try {
+    const { date } = req.query;
+    if (!date) return res.status(400).json({ error: 'Se requiere fecha' });
+    const clients = await Client.find({ scheduledDates: date }).sort({ lastName: 1, firstName: 1 });
+    res.json(clients);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // GET by id
 router.get('/:id', async (req, res) => {
   try {
@@ -58,6 +70,23 @@ router.post('/', async (req, res) => {
   }
 });
 
+// POST schedule a client for a date (body: { date: 'YYYY-MM-DD' })
+router.post('/:id/schedule', async (req, res) => {
+  try {
+    const { date } = req.body;
+    if (!date) return res.status(400).json({ error: 'Se requiere fecha' });
+    const client = await Client.findById(req.params.id);
+    if (!client) return res.status(404).json({ error: 'No encontrado' });
+    if (!client.scheduledDates.includes(date)) {
+      client.scheduledDates.push(date);
+      await client.save();
+    }
+    res.json(client);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
 // PUT update
 router.put('/:id', async (req, res) => {
   try {
@@ -67,6 +96,21 @@ router.put('/:id', async (req, res) => {
     res.json(client);
   } catch (err) {
     res.status(400).json({ error: err.message });
+  }
+});
+
+// DELETE remove scheduled date from client: /api/clients/:id/schedule?date=YYYY-MM-DD
+router.delete('/:id/schedule', async (req, res) => {
+  try {
+    const { date } = req.query;
+    if (!date) return res.status(400).json({ error: 'Se requiere fecha' });
+    const client = await Client.findById(req.params.id);
+    if (!client) return res.status(404).json({ error: 'No encontrado' });
+    client.scheduledDates = client.scheduledDates.filter(d => d !== date);
+    await client.save();
+    res.json({ success: true });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 });
 

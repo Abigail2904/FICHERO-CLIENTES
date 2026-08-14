@@ -31,8 +31,22 @@ body{
 .form-actions button{ padding:10px 14px; border-radius:8px; border:none; cursor:pointer; flex:1; min-width:120px }
 .form-actions #saveBtn{ background:#5a4632; color:#fff }
 .form-actions #cancelBtn{ background:transparent; border:1px solid rgba(90,70,50,0.08); color:#5a4632 }
+
+/* Botones en la sección de programación diaria: usar estilo de botón principal */
+.day-schedule button{
+	padding:10px 12px;
+	border-radius:8px;
+	border:none;
+	background:#5a4632;
+	color:#fff;
+	cursor:pointer;
+}
+.day-schedule label{ display:flex; align-items:center; gap:8px }
 .group{ margin-bottom:18px }
 .group h2{ margin:8px 0; padding:8px 12px; background: rgba(233, 209, 166, 0.6); color:#5a4632; border-radius:8px }
+.group h2{ cursor:pointer }
+.group .items{ display:none; padding-top:8px }
+.group.open .items{ display:block }
 .client{ padding:10px 0; border-bottom:1px solid rgba(90,70,50,0.05) }
 .client-main{ display:flex; align-items:center; gap:14px; flex-wrap:wrap }
 .client .num{ width:40px; text-align:right; color:#8b7a6a; font-weight:600 }
@@ -60,4 +74,27 @@ body{
 	.client .num{ width:24px; text-align:left; }
 	.desc{ margin-left:0; }
 }
+
+/* Botón subir (scroll to top) */
+.scroll-top{
+	position:fixed;
+	right:20px;
+	bottom:20px;
+	width:52px;
+	height:52px;
+	padding:0;
+	border-radius:50%;
+	background:transparent;
+	color:#5a4632;
+	border:2px solid rgba(90,70,50,0.12);
+	cursor:pointer;
+	box-shadow:0 6px 18px rgba(59,47,37,0.08);
+	display:none;
+	align-items:center;
+	justify-content:center;
+	font-size:20px;
+	z-index:1000;
+	transition:transform .18s ease, opacity .18s ease;
+}
+.scroll-top.show{ display:flex; opacity:1; transform:translateY(0) }
 

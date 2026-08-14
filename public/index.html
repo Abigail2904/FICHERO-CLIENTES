@@ -27,9 +27,18 @@
         </div>
       </div>
 
+      <div class="search day-schedule">
+        <h3>Programación del día</h3>
+        <label>Seleccionar día: <input type="date" id="dayInput" /></label>
+        <button id="loadDayBtn">Cargar día</button>
+        <button id="clearDayBtn">Limpiar día</button>
+        <div id="dailyList"></div>
+      </div>
+
       <div id="list"></div>
     </div>
 
+    <button id="scrollTopBtn" class="scroll-top" title="Ir arriba">↑</button>
     <script src="app.js"></script>
   </body>
 </html>
